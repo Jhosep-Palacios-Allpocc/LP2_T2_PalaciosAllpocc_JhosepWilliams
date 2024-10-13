@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Empleado</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Detalle de Empleado</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>DNI</th>
+                <td th:text="${empleado.dniEmpleado}"></td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td th:text="${empleado.nombreEmpleado}"></td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td th:text="${empleado.apellidoEmpleado}"></td>
+            </tr>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td th:text="${#dates.format(empleado.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>Dirección</th>
+                <td th:text="${empleado.direccion}"></td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td th:text="${empleado.correo}"></td>
+            </tr>
+            <tr>
+                <th>Área</th>
+                <td th:text="${empleado.area.nombreArea}"></td>
+            </tr>
+        </table>
+        <a th:href="@{/empleados/editar/{id}(id=${empleado.dniEmpleado})}" class="btn btn-warning">Editar</a>
+        <a th:href="@{/empleados/eliminar/{id}(id=${empleado.dniEmpleado})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este empleado?');">Eliminar</a>
+        <a th:href="@{/empleados/}" class="btn btn-secondary">Regresar</a>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
